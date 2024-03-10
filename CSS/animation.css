@@ -1,12 +1,12 @@
 tr:hover {
-    background-color: #ddd;  
-    cursor: pointer;  
-  }
-  
-  tr:hover td, tr:hover th {
-    border-color: #ddd;  
-  }
+  background-color: #ddd;  
+  cursor: pointer;  
+}
+
+tr:hover td, tr:hover th {
+  border-color: #ddd;  
+}
 
 #green_login:hover {
-    background-color: #5fdc64;
-  }
+  background-color: #5fdc64;
+}
