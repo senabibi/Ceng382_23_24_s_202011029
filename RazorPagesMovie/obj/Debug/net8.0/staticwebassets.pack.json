@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "c:\\Users\\SENA\\Desktop\\Ceng382\\Lab4\\RazorPagesMovie\\wwwroot\\js\\toggleElements.js",
+      "PackagePath": "staticwebassets\\js\\toggleElements.js"
+    },
+    {
       "Id": "c:\\Users\\SENA\\Desktop\\Ceng382\\Lab4\\RazorPagesMovie\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
