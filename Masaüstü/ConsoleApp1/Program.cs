@@ -1,101 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-
-public class RoomData
-{
-    [JsonPropertyName("Room")]
-    public Room[] Rooms { get; set; }
-}
-
-public class Room
-{
-    [JsonPropertyName("roomId")]
-    public string RoomId { get; set; }
-
-    [JsonPropertyName("roomName")]
-    public string RoomName { get; set; }
-
-    [JsonPropertyName("capacity")]
-    public int Capacity { get; set; }
-}
-
-public class Reservation
-{
-    public DateTime Time { get; set; }
-    public DateTime Date { get; set; }
-    public string ReserverName { get; set; }
-    public Room Room { get; set; }
-}
-
-public class ReservationHandler
-{
-    private Reservation[,] weeklySchedule;
-
-    public ReservationHandler()
-    {
-        
-        weeklySchedule = new Reservation[7, 24]; 
-    }
-
-    public void AddReservation(Reservation reservation)
-    {
-        
-        int dayIndex = (int)reservation.Date.DayOfWeek;
-        int hourIndex = reservation.Time.Hour;
-
-        if (weeklySchedule[dayIndex, hourIndex] == null)
-        {
-            weeklySchedule[dayIndex, hourIndex] = reservation;
-            Console.WriteLine("Reservation added successfully!");
-        }
-        else
-        {
-            Console.WriteLine("There is already a reservation at this  time.");
-        }
-    }
-
-    public void DeleteReservation(Reservation reservation)
-    {
-       
-        int dayIndex = (int)reservation.Date.DayOfWeek;
-        int hourIndex = reservation.Time.Hour;
-
-        if (weeklySchedule[dayIndex, hourIndex] != null)
-        {
-            weeklySchedule[dayIndex, hourIndex] = null;
-            Console.WriteLine("reservation deleted successfully!");
-        }
-        else
-        {
-            Console.WriteLine("no reservation found at this time.");
-        }
-    }
-
-    public void DisplayWeeklySchedule()
-    {
-        Console.WriteLine("This week schedule:");
-        string[] daysOfWeek = { "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" };
-        for (int day = 0; day < 7; day++)
-        {
-            Console.WriteLine($"Day {daysOfWeek[day]}:");
-            for (int hour = 0; hour < 24; hour++)
-            {
-                Reservation reservation = weeklySchedule[day, hour];
-                if (reservation != null)
-                {
-                    Console.WriteLine($"Time:{reservation.Time.ToShortTimeString()}, Room:{reservation.Room.RoomName},Reserver:{reservation.ReserverName}");
-                }
-                else
-                {
-                    Console.WriteLine($"Time:{hour}:00,Room: Available");
-                }
-            }
-            Console.WriteLine();
-        }
-    }
-}
 
 class Program
 {
@@ -141,7 +46,6 @@ class Program
             ReserverName = reserverName
         };
 
-        
         reservationHandler.AddReservation(reservation);
 
         reservationHandler.DisplayWeeklySchedule();
