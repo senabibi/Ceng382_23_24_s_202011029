@@ -8,7 +8,8 @@ public class Program
         string json = File.ReadAllText("Data.json"); // Replace with your actual file path
         List<Room> rooms = JsonConvert.DeserializeObject<List<Room>>(json);
 
-        ReservationHandler handler = new ReservationHandler();
+        // Use interfaces for dependency injection (optional)
+        IReservationService reservationService = CreateReservationService();
 
         while (true)
         {
@@ -23,13 +24,13 @@ public class Program
             switch (choice)
             {
                 case "1":
-                    AddReservation(handler, rooms);
+                    AddReservation(reservationService, rooms);
                     break;
                 case "2":
-                    DeleteReservation(handler);
+                    DeleteReservation(reservationService);
                     break;
                 case "3":
-                    handler.DisplayWeeklySchedule();
+                    reservationService.DisplayWeeklySchedule(DateTime.Today);
                     break;
                 case "4":
                     return;
@@ -40,8 +41,18 @@ public class Program
         }
     }
 
-    private static void AddReservation(ReservationHandler handler, List<Room> rooms)
+    private static IReservationService CreateReservationService()
     {
+        // Implement logic to create and configure a ReservationService instance
+        // This allows for easier mocking or testing with different implementations
+        IReservationRepository reservationRepository = new ReservationRepository();
+        RoomHandler roomHandler = new RoomHandler(); // Implement RoomHandler logic
+        return new ReservationService(reservationRepository, roomHandler);
+    }
+
+    private static void AddReservation(IReservationService reservationService, List<Room> rooms)
+    {
+        // ... (similar logic as before, but delegate to reservationService)
         Console.WriteLine("Enter date (YYYY-MM-DD): ");
         DateTime date = DateTime.Parse(Console.ReadLine());
 
@@ -51,38 +62,12 @@ public class Program
         Console.WriteLine("Enter your name: ");
         string name = Console.ReadLine();
 
-        // Select room
-        int selectedRoomId;
-        do
-        {
-            Console.WriteLine("Select room:");
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {rooms[i].RoomName} (Capacity: {rooms[i].Capacity})");
-            }
+        // Select room (using ReservationService)
+        Room selectedRoom = reservationService.SelectRoom(rooms);
 
-            string roomIdInput = Console.ReadLine();
-            if (int.TryParse(roomIdInput, out selectedRoomId) && selectedRoomId > 0 && selectedRoomId <= rooms.Count)
-            {
-                break; // Valid room selection
-            }
-            else
-            {
-                Console.WriteLine("Invalid room selection. Please try again.");
-            }
-        } while (true);
+        Reservation reservation = new Reservation(date, time, name, selectedRoom);
 
-        Room selectedRoom = rooms[selectedRoomId - 1]; // Adjust index for zero-based list
-
-        Reservation reservation = new Reservation
-        {
-            Date = date,
-            Time = time,
-            ReserverName = name,
-            Room = selectedRoom
-        };
-
-        if (handler.AddReservation(reservation))
+        if (reservationService.AddReservation(reservation))
         {
             Console.WriteLine("Reservation added successfully!");
         }
@@ -92,9 +77,9 @@ public class Program
         }
     }
 
-    private static void DeleteReservation(ReservationHandler handler)
+    private static void DeleteReservation(IReservationService reservationService)
     {
-        // Implement DeleteReservation logic
+        // Implement DeleteReservation logic using reservationService
         Console.WriteLine("Delete Reservation functionality not yet implemented.");
     }
 }
