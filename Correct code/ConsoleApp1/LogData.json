@@ -1,0 +1,26 @@
+{
+    "logs": [
+      {
+        "timestamp": "2024-04-18T12:30:45",
+        "action": "Add",
+        "reservationId": "1",
+        "roomId": "001",
+        "reserverName": "John Doe"
+      },
+      {
+        "timestamp": "2024-04-18T13:45:21",
+        "action": "Delete",
+        "reservationId": "2",
+        "roomId": "002",
+        "reserverName": "Jane Smith"
+      },
+      {
+        "timestamp": "2024-04-18T14:20:10",
+        "action": "Add",
+        "reservationId": "3",
+        "roomId": "003",
+        "reserverName": "Alice Johnson"
+      }
+    ]
+  }
+  
