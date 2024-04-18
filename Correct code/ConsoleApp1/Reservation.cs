@@ -1,9 +1,1 @@
-using System;
-
-public class Reservation
-{
-    public DateTime Time { get; set; }
-    public DateTime Date { get; set; }
-    public string ReserverName { get; set; }
-    public Room Room { get; set; }
-}
+public record Reservation(DateTime Time, DateTime Date, string ReserverName, Room Room);
