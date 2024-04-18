@@ -5,6 +5,52 @@ using System.Text.Json;
 class Program
 {
     static void Main(string[] args)
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        string logFilePath = "LogData.json";
+
+        var roomHandler = new RoomHandler();
+        var fileLogger = new FileLogger(logFilePath);
+        var logHandler = new LogHandler();
+
+        logHandler.LogFilePath = logFilePath;
+
+        IReservationRepository reservationRepository = new ReservationRepository();
+
+        var reservationHandler = new ReservationHandler(
+            reservationRepository, roomHandler, logHandler, logFilePath);
+
+        var reservationService = new ReservationService(reservationHandler);
+
+        TestReservationFunctionality(reservationService);
+
+        reservationService.DisplayWeeklySchedule();
+    }
+
+    private static void TestReservationFunctionality(IReservationService reservationService)
+    {
+        var reservation = new Reservation(DateTime.Now, DateTime.Today, "John Doe", new Room("001", "A-101", 30));
+        reservationService.AddReservation(reservation);
+
+        reservationService.DeleteReservation(reservation);
+    }
+}
+/* My solution from the previous week didn't adhere to the Single Responsibility Principle (SRP) adequately. 
+According to SRP, each class should have a specific responsibility, but in my code, 
+some classes were handling multiple tasks. This lack of separation of concerns made the codebase less maintainable.
+
+Additionally, I struggled to implement Dependency Injection (DI) effectively in this project. Without proper DI,
+the codebase suffered from tight coupling, making it challenging to replace components or mock dependencies for
+testing purposes.
+These principles are crucial in web development for creating modular and manageable codebases. 
+By following SRP, we ensure that each class or module focuses on a single responsibility,
+which enhances maintainability and makes it easier to understand and modify the code. Dependency Injection
+promotes loose coupling, allowing for more flexibility in swapping components and facilitating easier testing.
+Overall, adhering to these principles leads to more scalable, testable, and maintainable web applications.
+    */
     {
         string jsonFilePath = "Data.json";
         string jsonString = File.ReadAllText(jsonFilePath);
