@@ -129,3 +129,5 @@ Overall, adhering to these principles leads to more scalable, testable, and main
         }
     }
 }
+/*The ReservationHandler class does a lot of work: manages reservations, records events, and pulls reservations.
+I separated the logging functionality from the ReservationHandler class and put it in a new file.*/
