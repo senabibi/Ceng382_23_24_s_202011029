@@ -1,0 +1,116 @@
+{
+    "reservations": [
+        {
+            "reservationId": "1",
+            "roomId": "001",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "2",
+            "roomId": "002",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "3",
+            "roomId": "003",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "4",
+            "roomId": "004",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "5",
+            "roomId": "005",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "6",
+            "roomId": "006",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "7",
+            "roomId": "007",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "8",
+            "roomId": "008",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "9",
+            "roomId": "009",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "10",
+            "roomId": "010",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "11",
+            "roomId": "011",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "12",
+            "roomId": "012",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "13",
+            "roomId": "013",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "14",
+            "roomId": "014",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "15",
+            "roomId": "015",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        },
+        {
+            "reservationId": "16",
+            "roomId": "016",
+            "reserverName": "",
+            "date": "",
+            "time": ""
+        }
+    ]
+}
