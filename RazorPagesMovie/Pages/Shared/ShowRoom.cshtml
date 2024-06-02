@@ -1,0 +1,25 @@
+@page
+@model MyApp.Namespace.ShowRoomModel
+@{
+    ViewData["Title"] = "ShowRoom";
+}
+<h1 > Rooms</h1>
+<table class="table table-sm table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Capacity</th>
+            <th scope="col">RoomName</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var room in Model.RoomList)
+    {
+        <tr>
+            <td>@room.Capacity</td>
+            <td>@room.RoomName</td>
+            
+        </tr>
+    }
+    </tbody>
+</table>

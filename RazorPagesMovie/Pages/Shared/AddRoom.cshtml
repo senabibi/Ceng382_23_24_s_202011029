@@ -1,0 +1,29 @@
+@page
+@model MyApp.Namespace.AddRoomModel
+@{
+     ViewData["Title"] = "AddRoom";
+}
+<h1 class =makecol>Add Room</h1>
+
+<form method="post" class="makecol">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Room.Capacity" class="control-label"></label>
+    <input asp-for="Room.Capacity" class="form-control" />
+    <span asp-validation-for="Room.Capacity" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Room.RoomName" class="control-label"></label>
+    <input asp-for="Room.RoomName" class="form-control" />
+    <span asp-validation-for="Room.RoomName" class="text-danger"></span>
+</div>
+<br></br>
+<div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary buttoncolor" />
+</div>
+
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
